@@ -71,7 +71,9 @@ sudo yum install -y cassandra
 sudo systemctl start cassandra
 sudo systemctl enable cassandra
 
-### ✅ Step 2: Create Cassandra Keyspace and Tables
+---
+
+**### ✅ Step 2: Create Cassandra Keyspace and Tables**
 Enter Cassandra shell:
 
 cqlsh>
