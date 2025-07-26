@@ -62,4 +62,43 @@ These files were parsed and loaded into Cassandra tables:
 
 ---
 
-## 📂 Folder Structure
+## 🔧 Step-by-Step Setup Guide
+
+### ✅ Step 1: Install Cassandra on the VM
+
+```bash
+sudo yum install -y cassandra
+sudo systemctl start cassandra
+sudo systemctl enable cassandra
+
+### ✅ Step 2: Create Cassandra Keyspace and Tables
+Enter Cassandra shell:
+
+cqlsh>
+
+CREATE KEYSPACE movielens WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+USE movielens;
+
+CREATE TABLE movies (
+    movieId int PRIMARY KEY,
+    title text,
+    genres text
+);
+
+CREATE TABLE ratings (
+    userId int,
+    movieId int,
+    rating float,
+    timestamp bigint,
+    PRIMARY KEY ((userId), movieId)
+);
+
+CREATE TABLE users (
+    userId int PRIMARY KEY,
+    age int,
+    gender text,
+    occupation text,
+    zip text
+);
+
